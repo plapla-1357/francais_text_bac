@@ -1,3 +1,6 @@
+import re
+
+import blank
 from django.db import models
 from django.core.validators import MaxValueValidator
 from django.template.defaultfilters import slugify
@@ -129,18 +132,29 @@ class Text_interpretation(models.Model):
 class Plan(models.Model):
     text = models.ForeignKey(Text, on_delete=models.CASCADE)
     partie_I = models.CharField(max_length=256)
-    ligne_partie_I = SeparatedValuesField(final_type=int, editable=False, blank=True)
+    ligne_fin_partie_I = models.IntegerField( editable=False, null=True)
     partie_II = models.CharField(max_length=256, blank=True)
-    ligne_partie_II = SeparatedValuesField(final_type=int, editable=False, blank=True)
+    ligne_fin_partie_II = models.IntegerField( editable=False, null=True)
     partie_III = models.CharField(max_length=256, blank=True)
-    ligne_partie_III = SeparatedValuesField(final_type=int, editable=False, blank=True)
+    ligne_fin_partie_III = models.IntegerField( editable=False, null=True)
     partie_IV = models.CharField(max_length=256, blank=True)
-    ligne_partie_IV = SeparatedValuesField(final_type=int, editable=False, blank=True)
+    ligne_fin_partie_IV = models.IntegerField(editable=False, null=True)
+    problematique = models.CharField(max_length=256, blank=True)
     introduction = models.TextField(blank=True)
     conclusion = models.TextField(blank=True)
     ouverture = models.TextField(blank=True)
 
+    def save(self, *arg, **kwargs):
+        self.ligne_fin_partie_I = int(re.sub(r'l(igne)? ?\(\d+ ?- ?', '', re.search(r'l(igne)? ?\( ?\d+ ?- ?\d+ ?\)', self.partie_I)[0].replace(")","")))
+        self.ligne_fin_partie_II = int(re.sub(r'l(igne)? ?\(\d+ ?- ?', '', re.search(r'l(igne)? ?\( ?\d+ ?- ?\d+ ?\)', self.partie_II)[0].replace(")","")))
+        if self.partie_III != "":
+            self.ligne_fin_partie_III = int(re.sub(r'l(igne)? ?\(\d+ ?- ?', '', re.search(r'l(igne)? ?\( ?\d+ ?- ?\d+ ?\)', self.partie_III)[0].replace(")","")))
+        if self.partie_IV != "":
+            self.ligne_fin_partie_IV = int(re.sub(r'l(igne)? ?\(\d+ ?- ?', '', re.search(r'l(igne)? ?\( ?\d+ ?- ?\d+ ?\)', self.partie_VI)[0].replace(")","")))
+        super(Plan, self).save(*arg, **kwargs)
 
+    def __str__(self):
+        return self.text.name + " // " + self.problematique
 
 # todo de quoi stoker des auteur
 # todo ajouter les info sur les text dans la database
