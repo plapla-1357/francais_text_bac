@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/book_page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section id="book">
+        <div class="titlebox">
+            <h1>{{book.title}}</h1>
+        </div>
+
+        <div class = "content">
+            <div class="left_bar">
+                <div class="background"></div>
+                <h2>Infos sur l'oeuvre:</h2>
+                <img src="{{book.thumbnail.url}}" alt="{{book.title}}">
+                <div class="infos">
+                    <p><strong>Titre: </strong> {{book.title}}</p>
+                    <p><strong>Auteur: </strong> {{book.author}}</p>
+                    {% if book.date %}
+                        <p><strong>Date de parution: </strong> {{book.date}}</p>
+                    {% endif %}
+                    {% if book.mouvement %}
+                        <p><strong>mouvement: </strong> {{book.mouvement}}</p>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <div class="resume">
+                <h2> Résumé :</h2>
+                <p>
+                    {{book.resume}}
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

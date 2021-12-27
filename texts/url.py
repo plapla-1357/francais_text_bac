@@ -1,5 +1,8 @@
 from django.urls import path
 
+from texts.views import text, book
+
 urlpatterns = [
-    path('text/<slug:text_name>', text)
+    path('text/<slug:slug>/', text),
+    path('book/<slug:slug>/', book),
 ]

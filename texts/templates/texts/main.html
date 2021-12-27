@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{%  static 'css/main.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section id="texts" class="item_section">
+        <h2>Textes à étudier:</h2>
+
+        {% for sequence in sequences %}
+            <h3>{{sequence.name}}: </h3>
+            <div class="container">
+            {% for text in texts %}
+                {% if text.sequence == sequence %}
+                <a href="description/text/{{text.slug_name}}" class="card">
+                    <img src="{{text.book.thumbnail.url}}" alt="{{text.book.title}} image">
+                    <h4> {{text.name}} </h4>
+                    <h5> chapitre {{text.chapter}} partie {{text.partie}}</h5>
+                </a>
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endfor %}
+    </section>
+
+    <section id="book" class="item_section">
+        <h2> Differents livres: </h2>
+        <div class="container">
+            {% for book in books %}
+                <a href="description/book/{{book.slug_title}}" class="card">
+                    <img src="{{book.thumbnail.url}}" alt="{{text.book.title}} image">
+                    <h4> {{book.title}} </h4>
+                </a>
+            {% endfor%}
+        </div>
+    </section>
+
+{% endblock %}
+

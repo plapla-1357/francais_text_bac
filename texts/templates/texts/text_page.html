@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/text_page.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section id="text_page">
+        <div class="text_part">
+
+            <div id="text">
+                {% for line in Text.text %}
+                    <strong class="line_part{{ forloop.counter }}">{{ forloop.counter }}</strong> <p class="line_part">{{ line }}</p>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div id="interpretation_part">
+            <h2>Analyse:</h2>
+            {% for interpretation in Interpretations %}
+                <div class="interpretation">
+                    <h4>" {{ interpretation.extrait }} "</h4>
+                    <strong> outils: </strong>
+                    <p>{{ interpretation.outil }}</p>
+                    <strong> interpretation: </strong>
+                    <p> {{ interpretation.interpretation }}</p>
+                </div>
+            {% endfor %}
+
+        </div>
+    </section>
+{% endblock %}
+
+{# todolist :#}
+{# todo gerer les ligne qui vont a la ligne#}
+{# todo ajouter un espace entre les paragaphes#}
+{##}
+

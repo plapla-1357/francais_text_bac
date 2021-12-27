@@ -1,0 +1,8 @@
+separer tout les truc par ligne
+    utiliser une balise <br> pour les retour a la ligne
+
+    faire une fonction pour retourner une liste de ligne
+
+trouver une solution pour le théatre:
+    - mettre en gras les personnages
+    - pouvoir continuer sur le même vers
