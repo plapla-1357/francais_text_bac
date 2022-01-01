@@ -1,14 +1,24 @@
 header {
   background-color: #B0F5EE;
   height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 header nav {
   width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
+
 header nav a {
   background-color: #98DE95;
   color: white;
@@ -17,5 +27,4 @@ header nav a {
   margin-right: 10px;
   padding: 10px;
 }
-
 /*# sourceMappingURL=base.css.map */

@@ -24,6 +24,9 @@ body .item_section .container .card img {
   max-width: 100px;
   height: auto;
 }
+body .item_section .container .card:nth-child(even) {
+  background-color: #FAF5A8;
+}
 body .item_section .container .card:hover {
   box-shadow: 5px 5px 2px #95A5DE;
   background-color: #B0F5EE;

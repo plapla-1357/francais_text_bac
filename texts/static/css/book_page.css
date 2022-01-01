@@ -6,29 +6,46 @@
   vertical-align: center;
   margin-top: 10px;
 }
+
 #book .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 #book .content .left_bar {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-left: 10px;
   margin-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
   width: 300px;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 #book .content .left_bar h2 {
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   width: 100%;
 }
+
 #book .content .left_bar .infos {
   width: 90%;
   margin-top: 40px;
 }
+
 #book .content .left_bar .background {
   position: absolute;
   top: -120px;
@@ -38,12 +55,16 @@
   background-color: #FAF5A8;
   z-index: -1;
 }
+
 #book .content .left_bar img {
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   max-height: 40vh;
   max-width: 100%;
   margin-top: 20px;
 }
+
 #book .content .resume {
   margin: 10px;
   margin-top: 0;
@@ -51,11 +72,12 @@
   padding-top: 10px;
   width: 100%;
 }
+
 #book .content .resume h2 {
   margin: 10px;
 }
+
 #book .content .resume p {
   padding-left: 20px;
 }
-
 /*# sourceMappingURL=book_page.css.map */

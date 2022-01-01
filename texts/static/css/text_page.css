@@ -1,19 +1,42 @@
 #text_page {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 #text_page .text_part {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 70vw;
   border: 5px solid #FAF5A8;
   margin-top: 5px;
   margin-left: 5px;
   overflow: scroll;
-  height: calc(100vh - 50px - 20px);
+  height: calc(100vh - $header_height - 20px);
 }
+
 #text_page .text_part #text {
-  padding: 50px;
+  padding: 20px 50px 50px;
+  display: -ms-grid;
   display: grid;
 }
+
+#text_page .text_part #text .paragraphe {
+  margin-bottom: 10px;
+}
+
+#text_page .text_part #text .paragraphe .line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#text_page .text_part #text .paragraphe .line .line_number {
+  width: 20px;
+  background-color: #98DE95;
+}
+
 #text_page #interpretation_part {
   overflow: scroll;
   width: 30vw;
@@ -21,32 +44,39 @@
   margin-top: 5px;
   margin-right: 5px;
 }
+
 #text_page #interpretation_part h2 {
   margin: 10px;
 }
+
 #text_page #interpretation_part .interpretation {
   padding-top: 5px;
   background-color: white;
+  -webkit-transition: background-color 0.1s;
   transition: background-color 0.1s;
 }
+
 #text_page #interpretation_part .interpretation h4 {
   padding: 10px;
   margin: 10px;
   background-color: #B0F5EE;
   border-radius: 10px;
 }
+
 #text_page #interpretation_part .interpretation strong {
   margin-left: 10px;
 }
+
 #text_page #interpretation_part .interpretation p {
   margin-left: 20px;
   padding: 10px;
 }
+
 #text_page #interpretation_part .interpretation:nth-child(odd):hover {
   background-color: #95A5DE;
 }
+
 #text_page #interpretation_part .interpretation:nth-child(even):hover {
   background-color: #FAF5A8;
 }
-
 /*# sourceMappingURL=text_page.css.map */

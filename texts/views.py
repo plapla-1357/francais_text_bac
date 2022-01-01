@@ -23,6 +23,18 @@ def book(request, slug):
 
 def text(request, slug):
     text = Text.objects.get(slug_name=slug)
+
+    # ajoute un index a chaque ligne
+    line_number = 1
+    text_by_line = []
+    for paragraphe in text.text.split("§"):
+        paragraphe_by_line = {}
+        for line in paragraphe.split("<br>"):
+            paragraphe_by_line[line_number] = line
+            line_number += 1
+        text_by_line.append(paragraphe_by_line)
+    text.text = text_by_line
+
     Interpretations = Text_interpretation.objects.all()
     interpretations = [i for i in Interpretations if i.Text == text]
     return render(request, 'texts/text_page.html',

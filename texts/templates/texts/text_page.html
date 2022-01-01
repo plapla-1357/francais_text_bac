@@ -10,10 +10,15 @@
         <div class="text_part">
 
             <div id="text">
-                {% for line in Text.text %}
-                    <strong class="line_part{{ forloop.counter }}">{{ forloop.counter }}</strong> <p class="line_part">{{ line }}</p>
+                {% for paragraphe in Text.text %}
+                    <div class="paragraphe">
+                        {% for line, line_text in paragraphe.items %}
+                            <div class="line">
+                                <div class="line_number"> <p>{{ line }}</p></div> <p>{{ line_text }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
                 {% endfor %}
-
             </div>
         </div>
         <div id="interpretation_part">

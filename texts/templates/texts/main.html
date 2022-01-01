@@ -27,14 +27,20 @@
 
     <section id="book" class="item_section">
         <h2> Differents livres: </h2>
-        <div class="container">
+        {% for sequence in sequences %}
+
+            <h3>{{ sequence.name }}</h3>
+            <div class="container">
             {% for book in books %}
-                <a href="description/book/{{book.slug_title}}" class="card">
-                    <img src="{{book.thumbnail.url}}" alt="{{text.book.title}} image">
-                    <h4> {{book.title}} </h4>
-                </a>
+                {% if book.sequence == sequence %}
+                    <a href="description/book/{{book.slug_title}}" class="card">
+                        <img src="{{book.thumbnail.url}}" alt="{{text.book.title}} image">
+                        <h4> {{book.title}} </h4>
+                    </a>
+                {% endif %}
             {% endfor%}
-        </div>
+            </div>
+        {% endfor %}
     </section>
 
 {% endblock %}

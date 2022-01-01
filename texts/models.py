@@ -6,6 +6,7 @@ from django.core.validators import MaxValueValidator
 from django.template.defaultfilters import slugify
 
 
+
 class SeparatedValuesField(models.TextField):
     def __init__(self, separator=",", final_type=None, *args, **kwargs):
         self.separator = separator
@@ -79,7 +80,7 @@ class Book(models.Model):
         super(Book, self).save(*arg, **kwargs)
 
     def __str__(self):
-        return self.title
+        return f"{self.title}  //  {self.author}"
 
 
 class Text(models.Model):
@@ -89,7 +90,7 @@ class Text(models.Model):
     book = models.ForeignKey(Book, default=None, on_delete=models.CASCADE)
     chapter = models.IntegerField()
     partie = models.IntegerField()
-    text = SeparatedValuesField("<br>")
+    text = models.TextField("<br>")
 
     sequence = models.ForeignKey(Sequence,
                                  on_delete=models.DO_NOTHING,
